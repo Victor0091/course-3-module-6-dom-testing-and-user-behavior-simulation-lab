@@ -1,0 +1,36 @@
+function addElementToDOM(id, content) {
+    const element = document.createElement('div');
+    element.id = id;
+    element.textContent = content;
+    document.body.appendChild(element);
+}
+
+function removeElementFromDOM(id) {
+    const element = document.getElementById(id);
+    if (element) {
+        document.body.removeChild(element);
+    }
+}
+
+function simulateClick(id, content) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.textContent = content;
+    }
+}
+
+function handleFormSubmit(formId, outputId) {
+    const form = document.getElementById(formId);
+    const input = form.querySelector('input');
+    const output = document.getElementById(outputId);
+    
+    if (input.value.trim() === '') {
+        const errorMessage = document.getElementById('error-message');
+        errorMessage.textContent = 'Input cannot be empty';
+        errorMessage.classList.remove('hidden');
+    } else {
+        output.textContent = input.value;
+    }
+}
+
+export { addElementToDOM, removeElementFromDOM, simulateClick, handleFormSubmit };

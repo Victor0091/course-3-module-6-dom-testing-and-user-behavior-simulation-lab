@@ -1,0 +1,41 @@
+const addElementToDOM = (id, content) => {
+    const element = document.createElement('div');
+    element.id = id;
+    element.textContent = content;
+    document.body.appendChild(element);
+};
+
+const removeElementFromDOM = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+        document.body.removeChild(element);
+    }
+};
+
+const simulateClick = (id, content) => {
+    const element = document.getElementById(id);
+    if (element) {
+        element.textContent = content;
+    }
+};
+
+const handleFormSubmit = (formId, contentId) => {
+    const form = document.getElementById(formId);
+    const input = form.querySelector('input');
+    const dynamicContent = document.getElementById(contentId);
+    if (input.value) {
+        dynamicContent.textContent = input.value;
+    } else {
+        const errorMessage = document.getElementById('error-message');
+        errorMessage.textContent = 'Input cannot be empty';
+        errorMessage.classList.remove('hidden');
+    }
+};
+
+module.exports = { addElementToDOM, removeElementFromDOM, simulateClick, handleFormSubmit };
+
+const { test, expect } = require('@jest/globals');
+
+test('hello world!', () => {
+    expect('Hello, World!').toBe('Hello, World!');
+});
